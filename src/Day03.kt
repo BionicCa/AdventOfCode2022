@@ -4,7 +4,7 @@ fun main() {
         for (rucksack in input) {
             val chunks = rucksack.chunked(rucksack.length / 2)
 
-            val commonElements = findCommon(chunks[0].toCharArray(), chunks[1].toCharArray())
+            val commonElements = findCommonCharacter(chunks[0].toCharArray(), chunks[1].toCharArray())
             val score = commonElements.sumOf {
                 when {
                     it.isLowerCase() -> it.code - 96 // a - z -> 1 - 26
@@ -21,9 +21,10 @@ fun main() {
         val chunks = input.windowed(3, step = 3)
         var totalScore = 0
         for (rucksackGroup in chunks) {
-            val commonElements = findCommon(
-                findCommon(rucksackGroup[0].toCharArray(), rucksackGroup[1].toCharArray()).toCharArray(),
-                rucksackGroup[2].toCharArray())
+            val commonElements = findCommonCharacter(
+                findCommonCharacter(rucksackGroup[0].toCharArray(), rucksackGroup[1].toCharArray()).toCharArray(),
+                rucksackGroup[2].toCharArray()
+            )
             val score = commonElements.sumOf {
                 when {
                     it.isLowerCase() -> it.code - 96 // a - z -> 1 - 26

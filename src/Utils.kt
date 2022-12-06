@@ -28,3 +28,22 @@ fun readInputAsIntsList(name: String) : List<List<Int>> {
 fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
     .toString(16)
     .padStart(32, '0')
+
+fun findCommonCharacter(first: CharArray, second: CharArray): Set<Char> {
+    val common = first.toMutableSet()
+    common.retainAll(second.toSet())
+    return common
+}
+
+fun <T> transposeList(list: List<List<T>>): List<MutableList<T>> {
+    val transposed = mutableListOf<MutableList<T>>()
+
+    list.forEach { line ->
+        line.forEachIndexed { i, value ->
+            if (transposed.size <= i) transposed.add(i, mutableListOf(value))
+            else transposed[i].add(value)
+        }
+    }
+
+    return transposed
+}
