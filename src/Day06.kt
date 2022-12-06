@@ -3,7 +3,7 @@ fun main() {
         val dataStream = input.first().toCharArray()
         val checkCharacters = 4
         for (i in dataStream.indices) {
-            if (i + 3 >= dataStream.size) break
+            if (i + checkCharacters - 1 >= dataStream.size) break
             val slice = dataStream.slice(i until i + checkCharacters)
             val noDuplicates = slice.distinct().size == slice.size
             if (noDuplicates) {
@@ -17,7 +17,7 @@ fun main() {
         val dataStream = input.first().toCharArray()
         val checkCharacters = 14
         for (i in dataStream.indices) {
-            if (i + 3 >= dataStream.size) break
+            if (i + checkCharacters - 1 >= dataStream.size) break
             val slice = dataStream.slice(i until i + checkCharacters)
             val noDuplicates = slice.distinct().size == slice.size
             if (noDuplicates) {
